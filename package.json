@@ -3,7 +3,26 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node app.js"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "text",
+      "lcov",
+      "clover"
+    ],
+    "coverageDirectory": "./coverage",
+    "coverageThresholds": {
+      "global": {
+        "lines": 100,
+        "functions": 100,
+        "statements": 100,
+        "branches": 100
+      }
+    }
   },
   "keywords": [],
   "author": "",
