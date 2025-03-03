@@ -15,24 +15,7 @@ const addParkingSpot = async (req, res) => {
     }
 };
 
-const updateParkingSpot = async (req, res) => {
-    try {
-        const spotID = req.params.spotID;
-        const { status } = req.body;
-        const spot = await ParkingSpot.findOne({ spotID }); 
-        if (!spot) {
-            return res.status(400).json({ message: "Spot not found" });
-        }
-        if (status && status !== 'available' && status !== 'occupied') {
-            return res.status(400).json({ message: "Invalid status. It must be either 'available' or 'occupied'." });
-        }
-        spot.status = status || spot.status;
-        await spot.save();
-        res.json({ message: "Spot updated successfully", spot });
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error });
-    }
-};
+
 
 const getParkingSpots = async (req, res) => {
     try {
@@ -43,4 +26,4 @@ const getParkingSpots = async (req, res) => {
     }
 };
 
-module.exports = { addParkingSpot, updateParkingSpot, getParkingSpots };
+module.exports = { addParkingSpot,  getParkingSpots };
